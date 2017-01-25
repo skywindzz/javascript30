@@ -84,12 +84,9 @@
     const minute = now.getMinutes();
     const minuteDegrees = ((minute / 60) * 360) + 90;
     minuteHand.style.transform = `rotate(${ minuteDegrees }deg)`;
-    console.log(seconds);
+    console.log(now);
   }
-
   
-  
-
   setInterval(setDate, 1000);
 
   </script>
