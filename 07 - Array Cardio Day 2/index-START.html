@@ -45,18 +45,22 @@
     // Find is like filter, but instead returns just the one you are looking for
     // find the comment with the ID of 823423
        let findThis = comments.find( comment =>  { comment.id === id }});
-       
+       console.log(findThis);
        // let findThis = comments.find( comment => comment.id === 823423 );
     
     // Array.prototype.findIndex
     // Find the comment with this ID
     // delete the comment with the ID of 823423
       let id = 823423;
-      let findId = comments.findIndex( comment => {
-        if(comment.id = id) {
-          return 
-        }
-      })
+      let findId = comments.findIndex( comment => comment.id === id );
+      console.log(findId);
+      //comments.splice(1,1);
+      // or do like redux way
+      const newComment = [
+        ...comments.splice(0,findId),
+        ...comments.splice(findId + 1)
+      ];
+
   </script>
 </body>
 </html>
