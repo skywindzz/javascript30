@@ -18,29 +18,51 @@
     }
 
     // Regular
-
+    console.log('hello');
     // Interpolated
-
-    // Styled
-
+    console.log(`hello I am ${name} and you are?`)
+    // Styled you can style console.log text if you add %c in front of the text
+    console.log('%c I am some text', 'font-size: 50px; background: yellow; text-shadow: 10px 10px 0 blue')
     // warning!
-
+    console.warn('DOH NOT GOOD');
     // Error :|
-
+    console.error('Crap!');
     // Info
+    console.info('fun fact: you are smarter than you think');
 
-    // Testing
-
+    // Testing only fire if someething is false if it's true nothing happens
+    console.assert( 1 === 2, 'only shows if this statement is false')
     // clearing
-
+    //console.clear();
     // Viewing DOM Elements
-
+    const p = document.querySelector('p');
+    console.log(p);  //show the element
+    console.dir(p);  // this will show detail on p and all the properties methods on it
     // Grouping together
+    dogs.forEach(dog => {
+      console.group(`${dog.name}`)  // or use console.groupCollapsed(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.groupEnd(`${dog.name}`);
 
+    })
     // counting
-
+    console.count('tony');
+    console.count('Anthony');
+    console.count('Anthony');
+    console.count('tony');
+    console.count('tony');
+    console.count('Anthony');
+    console.count('tony');
     // timing
+    console.time('fetch data');
+    fetch('https://api.github.com/users/skywindzz')
+    .then(data=> {
+      console.timeEnd('fetching data');
+      console.log(data);
+    })
 
+    console.table(dogs);
   </script>
 </body>
 </html>
