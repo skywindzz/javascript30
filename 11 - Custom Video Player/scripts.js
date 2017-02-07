@@ -20,10 +20,19 @@ function togglePlay() {
     }
 }
 
+function skip() {
+    console.log('skipping');
+    video.currentTime += parseFloat(this.dataset.skip); 
+}
+
 function updateButton() {
-    console.log('update button');
+    const icon = this.paused ? '►' : '❚ ❚';   //you can use this here because .pause is bind to video
+    console.log(icon);
+    toggle.textContent = icon;
 }
 /* hook up event listeners */
 video.addEventListener('click', togglePlay);
 video.addEventListener('play', updateButton);
-toggle.addEventListener('click', togglePlay);
+video.addEventListener('pause', updateButton);
+toggle.addEventListener('click', togglePlay); 
+skipButtons.forEach(button => button.addEventListener('click', skip));
