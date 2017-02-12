@@ -3,7 +3,7 @@ const player = document.querySelector('.player');
 const video = document.querySelector('.viewer');
 const progress = player.querySelector('.progress');
 const progressBar = player.querySelector('.progress__filled');
-
+const fullScreen = document.querySelector('.fullscreen');
 const toggle = player.querySelector('.toggle');
 const skipButtons = player.querySelectorAll('[data-skip]');
 const ranges = player.querySelectorAll('.player__slider');
@@ -21,14 +21,11 @@ function togglePlay() {
 }
 
 function skip() {
-    console.log('skipping');
-    console.log(this.dataset);
     video.currentTime += parseFloat(this.dataset.skip); //remember you need to convert the string to a number 
 }
 
 function updateButton() {
     const icon = this.paused ? '►' : '❚ ❚';   //you can use this here because .pause is bind to video
-    console.log(icon);
     toggle.textContent = icon;
 }
 
@@ -42,9 +39,19 @@ function handleProgress() {
 }
 
 function scrub(e) {
-    console.log(e);
     const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
     video.currentTime = scrubTime;
+}
+
+let full = false;
+
+function fullscreen(){
+    full = !full;
+    if(full = true) {
+        video.webkitRequestFullScreen();
+    } else {
+        video.webkitExitFullScreen();
+    }
 }
 /* hook up event listeners */
 video.addEventListener('click', togglePlay);
@@ -61,3 +68,4 @@ progress.addEventListener('click', scrub);
 progress.addEventListener('mousemove', (e)=> mousedown && scrub(e));
 progress.addEventListener('mousedown', ()=> mousedown = true);
 progress.addEventListener('mouseup', ()=> mousedown = false);
+fullScreen.addEventListener('click', fullscreen);

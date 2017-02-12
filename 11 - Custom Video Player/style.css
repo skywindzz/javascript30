@@ -26,6 +26,10 @@ body {
   overflow: hidden;
 }
 
+.fullscreen {
+  background:rgba(0,0,0,0.1);
+  border-style: hidden;
+}
 /* This css is only applied when fullscreen is active. */
 .player:fullscreen {
   max-width: none;
