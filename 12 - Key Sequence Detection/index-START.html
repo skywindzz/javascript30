@@ -3,10 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>Key Detection</title>
-  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js">  
+  </script>
 </head>
 <body>
 <script>
+  let keyPress = [];
+   const secret = 'anthony';
+
+   window.addEventListener('keyup', (e) => {
+     keyPress.push(e.key);
+     keyPress.splice(-secret.length - 1, keyPress.length - secret.length);
+     console.log(keyPress);
+     if (keyPress.join('').includes(secret))  {
+       console.log('you got the passcode');
+       cornify_add();
+     }
+   });
+    
 </script>
 </body>
 </html>
