@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -13,39 +13,58 @@
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
     // and we want to make a copy of it.
-
+    const team = players; //this is array reference not a copy
     // You might think we can just do something like this:
-
+    team[3] = 'luke';
     // however what happens when we update that array?
-
+    console.log(players[3]);
+    console.log(team[3]);
     // now here is the problem!
-
+    //player 3 become luke too!!
     // oh no - we have edited the original array too!
 
     // Why? It's because that is an array reference, not an array copy. They both point to the same array!
 
     // So, how do we fix this? We take a copy instead!
-
+    const team2 = players.slice(); // this will create a copy of player array, slice() will return the whole array
+    //or
+    
     // one day
 
     // or create a new array and concat the old one in
-
+      const team 3 = [].concat(players);
     // or use the new ES6 Spread
-
+      const team4 = [...players];
+      const team5 = Array.from(players);
     // now when we update it, the original one isn't changed
 
     // The same thing goes for objects, let's say we have a person object
-
+     const person = { name: 'tony', age: 30 };
     // with Objects
-
+    const cap = person;
+     // if you do cap.number = 99; then person will also have that number: 99 prop
+    
     // and think we make a copy:
-
+    
     // how do we take a copy instead?
-
+    const cap2 = Object.assign({}, person, {number: 99, age: 12});
+    console.log(cap2);
     // We will hopefully soon see the object ...spread
 
     // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+    //one level deep means if will only get to name and age but object within an object such as social will still be referenced.!!
+    const tony = { 
+      name: 'tony',
+      age: 30,
+      social: {
+        twitter: '@tony',
+        facebook: 'tony.developer'
+      }
+    }
 
+    const dev = Object.assign({}, wes);
+    //a way for deep clone but has performance issues
+    const dev2 = JSON.parse(JSON.stringify(wes));
   </script>
 
 </body>

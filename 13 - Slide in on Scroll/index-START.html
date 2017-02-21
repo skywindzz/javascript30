@@ -50,9 +50,11 @@
 
         //half way through the image
         const slideInAt = (window.scrollY + window.innerHeight) - slideImage.height / 2;
+        console.log('slideInAt: ', slideInAt);
         //bottom of the iamge
         const imageBottom = slideImage.offsetTop + slideImage.height;
-        
+        console.log('imageBottom: ', imageBottom);
+        //declear your booleans first before doing the if statement to make it clear
         const isHalfShow = slideInAt > slideImage.offsetTop;
         const isNotScrollPast = window.scrollY < imageBottom;
         
