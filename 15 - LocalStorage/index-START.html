@@ -32,11 +32,25 @@
 
   function addItem(e) {
     e.preventDefault(); //since you are handling this client side you don't need to send it to backend. 'submit' auto sent it backend.
-    const text = this.querySelector('[name=item]');
+    const text = (this.querySelector('[name=item]')).value; //this refer to the form tag it's in () because we need the value of this form tag on submit 
     const item = {
-      text: 'Item Name',
-      done: false;
-    }
+      text, 
+      done: false
+    };
+    items.push(item);
+    populateList(items,itemsList);
+    this.reset(); //form element has reset element
+    console.log(item);
+  }
+
+  function populateList(plates = [], platesList){
+    platesList.innerHTML = plates.map((plate, i) => {
+      return ` 
+        <li>  
+          <label for="">${plate.text}</label>
+        </li>
+        `;
+    }).join('');
   }
 
   addItems.addEventListener('submit', addItem)
