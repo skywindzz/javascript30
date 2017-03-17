@@ -182,7 +182,7 @@
     </li>
   </ul>
 <script>
-  const videoNode = [...document.querySelectorAll('[data-time]')];
+  const videoNode = [...document.querySelectorAll('[data-time]')]; // if you don't put them into array form you can't use map on it
   const videoTime = videoNode
     .map(node => node.dataset.time)
     .map(timeCode => {
@@ -201,7 +201,7 @@
 
     console.log(hours,mins, secondsLeft);
 
-    
+
 </script>
 </body>
 </html>
