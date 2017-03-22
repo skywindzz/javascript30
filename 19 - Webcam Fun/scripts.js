@@ -10,10 +10,28 @@ function getVideo() {
             console.log(localMediaStream);
             video.src = window.URL.createObjectURL(localMediaStream);
             video.play();
-        });
-        .catch(err=> {
-            console.error('Please give access to web cam', err);
         })
+        .catch(err => {
+            console.error('Please give access to web cam', err);
+        });
 };
 
+function paintToCanvas(){
+    const width= video.videoWidth;
+    const height = video.videoHeight;
+    canvas.width = width;
+    canvas.height = height;
+
+    return setInterval(() => {
+        ctx.drawImage(video, 0, 0, width, height);
+    }, 16);
+}
+
+function takePhoto() {
+    snap.currenTime = 0;
+    snap.play();
+}
+
 getVideo();
+video.addEventListener('canplay', paintToCanvas);
+
