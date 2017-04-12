@@ -54,7 +54,23 @@
   </div>
 
 <script>
+  const nav = document.querySelector('#main');
+  const topOfNav = nav.offsetTop;
 
+  function fixNav(){
+    //to get rid of the clinkness when you use fix property on nav
+    //do this in javascript because if you just put px different screen might have different height
+    document.body.style.paddingTop = nav.offsetHeight + 'px';
+    
+    if(window.scrollY >= topOfNav) {
+      document.body.classList.add('fixed-nav');
+    } else {
+    document.body.style.paddingTop = 0;
+    document.body.classList.remove('fixed-nav');
+    }
+  }
+
+  window.addEventListener('scroll', fixNav);
 </script>
 
 </body>
