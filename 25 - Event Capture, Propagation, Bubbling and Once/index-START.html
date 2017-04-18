@@ -39,6 +39,21 @@
 
 <button></button>
 <script>
+  //bubbling: browser will figure out what you click on but it 
+  //will ripple all the way up  
+  const divs = document.querySelectorAll('div');
+  
+  function logText(e){
+    console.log(this.classList.value);
+    e.stopPropagation(); //stop bubbling
+  }
+
+  divs.forEach(div => div.addEventListener('click', logText, {
+    capture: false,  //if you use capture true then logText will not get 
+    //run on bubbling up, it will just run the way dow
+    once : true
+  }));
+
 
 </script>
 </body>
