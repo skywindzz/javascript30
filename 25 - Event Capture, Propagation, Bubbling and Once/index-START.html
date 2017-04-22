@@ -40,7 +40,7 @@
 <button></button>
 <script>
   //bubbling: browser will figure out what you click on but it 
-  //will ripple all the way up  
+  //will ripple you click all the way up to other elements  
   const divs = document.querySelectorAll('div');
   
   function logText(e){
@@ -51,7 +51,7 @@
   divs.forEach(div => div.addEventListener('click', logText, {
     capture: false,  //if you use capture true then logText will not get 
     //run on bubbling up, it will just run the way dow
-    once : true
+    once : true  //it will only let each element run once
   }));
 
 
